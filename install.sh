@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+
 PACKAGES="stow tmux neovim"
 
 missing() {
@@ -30,4 +32,22 @@ if missing; then
   fi
 fi
 
-stow tmux nvim
+cd "$SCRIPT_DIR"
+stow tmux nvim ssh
+
+HOOK_MARKER="# Dotfiles auto-update"
+case "$SHELL" in
+  */zsh) RC_FILE="$HOME/.zshrc" ;;
+  *) RC_FILE="$HOME/.bashrc" ;;
+esac
+
+if [ -f "$RC_FILE" ] && ! grep -qF "$HOOK_MARKER" "$RC_FILE"; then
+  cat >>"$RC_FILE" <<EOF
+
+$HOOK_MARKER
+if [ -d "$SCRIPT_DIR/.git" ]; then
+  git -C "$SCRIPT_DIR" pull --quiet --ff-only 2>/dev/null
+  "$SCRIPT_DIR/install.sh"
+fi
+EOF
+fi
