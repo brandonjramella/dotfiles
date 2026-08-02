@@ -1,1 +1,16 @@
-{}
+{
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "t",
+    ): System(Terminal),
+    (
+        modifiers: [
+            Alt,
+        ],
+        key: "l",
+        description: Some("test"),
+    ): Spawn("test"),
+}

@@ -47,7 +47,6 @@ if [ -f "$RC_FILE" ] && ! grep -qF "$HOOK_MARKER" "$RC_FILE"; then
 $HOOK_MARKER
 if [ -d "$SCRIPT_DIR/.git" ]; then
   git -C "$SCRIPT_DIR" pull --quiet --ff-only 2>/dev/null
-  "$SCRIPT_DIR/install.sh"
 fi
 EOF
 fi
