@@ -6,4 +6,12 @@
         ],
         key: "t",
     ): System(Terminal),
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "space",
+        description: Some("1Password Quick Access"),
+    ): Spawn("1password --quick-access"),
 }
