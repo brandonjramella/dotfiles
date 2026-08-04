@@ -69,5 +69,4 @@ Stow only symlinks an entire subdirectory (e.g. `~/.config/nvim`) if that direct
 
 ## Known TODOs
 
-- `ssh/.ssh/config`: `HostName`/`User` are placeholders for the `dellg5` and `truenas` hosts.
-- `ssh/.ssh/config`: `IdentityAgent` points at `~/.1password/agent.sock`, which requires a WSL2 bridge (npiperelay + socat, per 1Password's WSL docs) to actually reach the 1Password agent on the Windows host. Not yet set up.
+- `ssh/.ssh/config`: `IdentityAgent` defers to `$SSH_AUTH_SOCK` so the same config works across OSes. On WSL2, something still needs to set `SSH_AUTH_SOCK` to a local socket bridged from the Windows host's 1Password agent (npiperelay + socat, per 1Password's WSL docs). Not yet set up.
