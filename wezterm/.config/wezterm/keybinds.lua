@@ -67,7 +67,7 @@ local keys = {
   -- [DOCS] "Split the current pane into two, top and bottom."
   {
     key    = '"',
-    mods   = 'LEADER',
+    mods   = 'LEADER|SHIFT',
     action = act.SplitVertical { domain = 'CurrentPaneDomain' },
   },
 
@@ -100,7 +100,7 @@ local keys = {
   -- [DOCS] "Split the current pane into two, left and right."
   {
     key    = '%',
-    mods   = 'LEADER',
+    mods   = 'LEADER|SHIFT',
     action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
 
@@ -108,7 +108,7 @@ local keys = {
   -- [DOCS] "Kill the current window."
   {
     key    = '&',
-    mods   = 'LEADER',
+    mods   = 'LEADER|SHIFT',
     action = act.CloseCurrentTab { confirm = true },
   },
 
@@ -284,7 +284,7 @@ local keys = {
   -- [DOCS] "Enter copy mode to copy text or view the history."
   {
     key    = '[',
-    mods   = 'LEADER',
+    mods   = 'LEADER|SHIFT',
     action = act.ActivateCopyMode,
   },
 
@@ -292,7 +292,7 @@ local keys = {
   -- [DOCS] "Paste the most recently copied buffer of text."
   {
     key    = ']',
-    mods   = 'LEADER',
+    mods   = 'LEADER|SHIFT',
     action = act.PasteFrom 'Clipboard',
   },
 

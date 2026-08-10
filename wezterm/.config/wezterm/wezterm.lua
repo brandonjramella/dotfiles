@@ -63,7 +63,7 @@ config.tab_and_split_indices_are_zero_based = false
 config.leader = {
   key                  = 'b',
   mods                 = 'CTRL',
-  timeout_milliseconds = 1000,
+  timeout_milliseconds = 2000,
 }
 
 -- =============================================================================
@@ -105,5 +105,25 @@ end)
 -- =============================================================================
 
 keybinds.apply(config)
+
+-- =============================================================================
+-- PER-OS SETTINGS
+-- [GENERATED]
+-- =============================================================================
+
+config.window_background_opacity  = 0.70
+if wezterm.target_triple:find('windows') then
+  -- Change to 'Acrylic' for blur
+  config.win32_system_backdrop      = 'Auto'
+  config.window_background_opacity  = 0.90
+elseif wezterm.target_triple:find('darwin') then
+  config.macos_window_background_blur = 20
+else
+  config.kde_window_background_blur = true
+end
+
+config.colors = {
+  background = '#000000',
+}
 
 return config
