@@ -111,15 +111,13 @@ keybinds.apply(config)
 -- [GENERATED]
 -- =============================================================================
 
-config.window_background_opacity  = 0.70
+config.window_background_opacity  = 0.85
 if wezterm.target_triple:find('windows') then
   -- Change to 'Acrylic' for blur
   config.win32_system_backdrop      = 'Auto'
-  config.window_background_opacity  = 0.90
 elseif wezterm.target_triple:find('darwin') then
   config.macos_window_background_blur = 20
 else
-  config.kde_window_background_blur = true
 end
 
 config.colors = {
