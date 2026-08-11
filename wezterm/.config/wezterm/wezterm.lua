@@ -44,12 +44,10 @@ config.audible_bell                = 'Disabled'
 config.automatically_reload_config = true
 config.status_update_interval      = 500  -- ms; faster polling improves ';' accuracy
 
--- Tab bar at bottom, like tmux status line
--- [COMMUNITY]
 config.enable_tab_bar                 = true
-config.tab_bar_at_bottom              = true
 config.use_fancy_tab_bar              = false
 config.show_new_tab_button_in_tab_bar = false
+config.hide_tab_bar_if_only_one_tab   = true
 
 -- 1-based tab indices to match tmux's default (Prefix+1 = first tab)
 -- [DOCS/GENERATED]

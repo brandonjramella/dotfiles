@@ -67,6 +67,17 @@ Deliberately NOT tracked: theme/palette files (`com.system76.CosmicTheme.*`, hug
 
 Stow only symlinks an entire subdirectory (e.g. `~/.config/nvim`) if that directory doesn't already exist on the target machine; if it does, it descends and symlinks individual files instead. This matters for `ssh/.ssh/config`: `~/.ssh` already contains real key files, so stow will add just the `config` symlink alongside them rather than replacing the directory.
 
+## Brewfile (package inventory)
+
+`Brewfile` at the repo root is a Homebrew Bundle manifest listing installed `tap`/`brew`/`cask` entries **and** Flatpak apps (`flatpak "app.id"` lines) — Homebrew Bundle supports Flatpak natively on Linux, no separate tooling needed.
+
+- Regenerate after installing/removing packages: `brew bundle dump --force --file=Brewfile` (run from repo root). This overwrites the file with the current system state, so review the diff before committing.
+- Restore everything on a new machine: `brew bundle install --file=Brewfile` (requires `flatpak` and the `flathub` remote already configured for the Flatpak entries to install).
+
+## SYSTEM-PACKAGES.md
+
+Documents apt packages manually installed at the OS level (bootloader/ZFS/encryption, NVIDIA driver, wezterm's third-party repo, etc.), derived by diffing `apt-mark showmanual` against the original install's package set in `/var/log/apt/history.log`. Not stow-managed (there's nothing to symlink), just a reference doc — regenerate the diff manually if the system package set changes significantly.
+
 ## Known TODOs
 
 - `ssh/.ssh/config`: `IdentityAgent` defers to `$SSH_AUTH_SOCK` so the same config works across OSes. On WSL2, something still needs to set `SSH_AUTH_SOCK` to a local socket bridged from the Windows host's 1Password agent (npiperelay + socat, per 1Password's WSL docs). Not yet set up.
