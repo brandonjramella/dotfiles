@@ -41,12 +41,12 @@ case "$SHELL" in
   *) RC_FILE="$HOME/.bashrc" ;;
 esac
 
-if [ -f "$RC_FILE" ] && ! grep -qF "$HOOK_MARKER" "$RC_FILE"; then
-  cat >>"$RC_FILE" <<EOF
-
-$HOOK_MARKER
-if [ -d "$SCRIPT_DIR/.git" ]; then
-  git -C "$SCRIPT_DIR" pull --quiet --ff-only 2>/dev/null
-fi
-EOF
-fi
+#if [ -f "$RC_FILE" ] && ! grep -qF "$HOOK_MARKER" "$RC_FILE"; then
+#  cat >>"$RC_FILE" <<EOF
+#
+#$HOOK_MARKER
+#if [ -d "$SCRIPT_DIR/.git" ]; then
+#  git -C "$SCRIPT_DIR" pull --quiet --ff-only 2>/dev/null
+#fi
+#EOF
+#fi
