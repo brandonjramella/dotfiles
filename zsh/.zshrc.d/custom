@@ -1,0 +1,9 @@
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+eval "$(zoxide init zsh)"
+
+prompt off
+eval "$(starship init zsh)"
+alias ls='ls --color=auto'
+
